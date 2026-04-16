@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리피토 × 2026 ACC/AHA 가이드라인</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --primary: #1B3D7B;
+  --primary-light: #2A5AB3;
+  --primary-pale: #EBF0FA;
+  --accent: #C9952B;
+  --accent-light: #F5E6C8;
+  --success: #0F6E56;
+  --success-light: #E1F5EE;
+  --danger: #A32D2D;
+  --danger-light: #FCEBEB;
+  --warn: #854F0B;
+  --warn-light: #FAEEDA;
+  --gray: #6B7280;
+  --border: #D1D9E6;
+  --text: #1F2937;
+  --text-secondary: #4B5563;
+  --shadow: 0 2px 12px rgba(27,61,123,0.10);
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #EEF2F8;
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.header {
+  background: linear-gradient(135deg, #0A1E45 0%, #1B3D7B 55%, #2A5AB3 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: rgba(201,149,43,0.10);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 30%;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+.header-inner {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 30px 28px 26px;
+  position: relative;
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.header-badge {
+  display: inline-block;
+  background: rgba(201,149,43,0.22);
+  border: 1px solid rgba(201,149,43,0.55);
+  color: #F5C842;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.header-logo {
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.5px;
+}
+.header-logo span { color: #F5C842; }
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+.header h1 em { color: #F5C842; font-style: normal; }
+.header-sub {
+  font-size: 12px;
+  opacity: 0.72;
+  font-weight: 300;
+}
+
+/* Nav */
+.tab-nav {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray);
+  position: relative;
+  transition: color 0.2s;
+  white-space: nowrap;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2.5px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.22s;
+  border-radius: 2px 2px 0 0;
+}
+.tab-btn.active { color: var(--primary); }
+.tab-btn.active::after { transform: scaleX(1); }
+.tab-btn:hover:not(.active) { color: var(--primary-light); }
+.tab-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--primary-pale);
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.tab-btn.active .tab-num { background: var(--primary); color: white; }
+
+/* Content */
+.content {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-sub {
+  font-size: 12px;
+  color: var(--gray);
+  margin-bottom: 18px;
+  line-height: 1.55;
+}
+
+/* ============== CHATBOT ============== */
+.quick-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+.quick-btn {
+  background: var(--primary-pale);
+  border: 1px solid #C5D3EB;
+  color: var(--primary);
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.quick-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+.chat-container { display: flex; flex-direction: column; }
+.chat-messages {
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  background: #F7F9FC;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.chat-messages::-webkit-scrollbar { width: 5px; }
+.chat-messages::-webkit-scrollbar-thumb { background: #C5D3EB; border-radius: 4px; }
+.msg { display: flex; gap: 10px; }
+.msg-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.msg.bot .msg-avatar { background: var(--primary); color: white; }
+.msg.user .msg-avatar { background: var(--accent); color: white; }
+.msg.user { flex-direction: row-reverse; }
+.msg-bubble {
+  max-width: 80%;
+  border-radius: 14px;
+  padding: 10px 15px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.msg.bot .msg-bubble {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-top-left-radius: 4px;
+}
+.msg.user .msg-bubble {
+  background: var(--primary);
+  color: white;
+  border-top-right-radius: 4px;
+}
+.chat-input-row { display: flex; gap: 8px; }
+.chat-input {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 11px 15px;
+  font-size: 13px;
+  font-family: 'Noto Sans KR', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+  background: white;
+}
+.chat-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(27,61,123,0.08); }
+.send-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 11px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.send-btn:hover { background: var(--primary-light); }
+
+/* ============== PATIENT CALCULATOR ============== */
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-control {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  background: white;
+}
+.form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(27,61,123,0.08); }
+.checkbox-group { display: flex; flex-wrap: wrap; gap: 7px; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text);
+  cursor: pointer;
+  padding: 6px 11px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  transition: all 0.15s;
+  user-select: none;
+  background: white;
+}
+.check-item:hover { border-color: var(--primary); background: var(--primary-pale); }
+.check-item input[type="checkbox"] { accent-color: var(--primary); width: 13px; height: 13px; }
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.calc-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #1B3D7B, #2A5AB3);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 14px;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.calc-btn:hover { opacity: 0.92; }
+.calc-btn:active { transform: scale(0.99); }
+
+/* Result */
+.result-card {
+  display: none;
+  background: white;
+  border-radius: 14px;
+  border: 2px solid var(--primary);
+  overflow: hidden;
+  margin-top: 22px;
+  animation: fadeIn 0.3s ease;
+}
+.result-header {
+  background: linear-gradient(135deg, #0A1E45, #1B3D7B);
+  color: white;
+  padding: 18px 22px;
+}
+.result-header h3 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.result-header p { font-size: 12px; opacity: 0.7; }
+.result-body { padding: 22px; }
+.result-sec { margin-bottom: 22px; }
+.result-sec-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray);
+  margin-bottom: 12px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--border);
+}
+.metric-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.metric-box {
+  background: var(--primary-pale);
+  border: 1px solid #C5D3EB;
+  border-radius: 11px;
+  padding: 13px 18px;
+  text-align: center;
+  min-width: 100px;
+}
+.metric-box.danger-box { background: var(--danger-light); border-color: #F0A0A0; }
+.metric-box.success-box { background: var(--success-light); border-color: #9FE1CB; }
+.metric-lbl { font-size: 11px; color: var(--gray); margin-bottom: 2px; }
+.metric-val { font-size: 24px; font-weight: 900; color: var(--primary); line-height: 1.1; }
+.metric-box.danger-box .metric-val { color: var(--danger); }
+.metric-box.success-box .metric-val { color: var(--success); }
+.metric-unit { font-size: 11px; color: var(--gray); }
+.arrow-sep { font-size: 20px; color: #C5D3EB; }
+.rec-box {
+  background: linear-gradient(135deg, #1B3D7B, #2A5AB3);
+  border-radius: 11px;
+  padding: 16px 18px;
+  color: white;
+  margin-bottom: 10px;
+}
+.rec-lbl { font-size: 10px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.7px; }
+.rec-val { font-size: 19px; font-weight: 900; margin: 4px 0 2px; line-height: 1.2; }
+.rec-note { font-size: 12px; opacity: 0.85; }
+.add-note {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 7px;
+  padding: 9px 13px;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+.trial-cards { display: flex; flex-direction: column; gap: 14px; }
+.trial-card {
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.trial-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 16px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.trial-name { font-size: 14px; font-weight: 700; color: var(--primary); }
+.trial-tag {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--primary-pale);
+  color: var(--primary);
+  padding: 3px 9px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.trial-card-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0;
+}
+.trial-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding: 12px 16px;
+  border-right: 1px solid var(--border);
+}
+.trial-desc-item { margin-bottom: 3px; }
+.trial-desc-item:last-child { margin-bottom: 0; }
+.trial-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px;
+  background: var(--success-light);
+  min-width: 110px;
+  text-align: center;
+  gap: 3px;
+}
+.trial-stat-num {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--success);
+  line-height: 1;
+}
+.trial-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--success);
+  line-height: 1.35;
+}
+.trial-stat-sub {
+  font-size: 10px;
+  color: #0F6E56;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+.trial-card-footer {
+  padding: 8px 16px;
+  background: var(--success-light);
+  border-top: 1px solid #9FE1CB;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.risk-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.risk-very-high { background: var(--danger-light); color: var(--danger); }
+.risk-high { background: var(--warn-light); color: var(--warn); }
+.risk-intermediate { background: #FEF9C3; color: #854F0B; }
+.risk-borderline { background: var(--primary-pale); color: var(--primary); }
+.risk-low { background: var(--success-light); color: var(--success); }
+
+/* ============== GUIDELINE COMPARISON ============== */
+.comp-header {
+  background: linear-gradient(135deg, #0A1E45, #1B3D7B);
+  border-radius: 14px;
+  color: white;
+  padding: 24px 22px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.comp-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.comp-header p { font-size: 13px; opacity: 0.75; }
+.vs-badge {
+  display: inline-block;
+  background: rgba(201,149,43,0.25);
+  border: 1px solid rgba(201,149,43,0.6);
+  color: #F5C842;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.change-item {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 13px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+.change-hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: #F7F9FC;
+  border-bottom: 1px solid var(--border);
+}
+.change-icon {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.change-cat { font-size: 16px; font-weight: 700; color: var(--text); flex: 1; }
+.change-type {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+.type-new { background: var(--success-light); color: var(--success); }
+.type-change { background: var(--primary-pale); color: var(--primary); }
+.type-reinstate { background: var(--accent-light); color: var(--accent); }
+.type-enhance { background: var(--warn-light); color: var(--warn); }
+.change-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.change-col { padding: 16px 18px; }
+.change-col:first-child { border-right: 1px solid var(--border); }
+.col-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 9px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.lbl-2018 { background: #E5E7EB; color: #4B5563; }
+.lbl-2026 { background: var(--primary); color: white; }
+.change-col p { font-size: 13px; color: var(--text); line-height: 1.65; }
+.hl { color: var(--primary); font-weight: 700; }
+.ldl-targets { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.ldl-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-size: 12.5px;
+}
+.ldl-row.vhigh { background: var(--danger-light); }
+.ldl-row.high { background: var(--warn-light); }
+.ldl-row.mod { background: #FEF9C3; }
+.ldl-risk { flex: 1; font-weight: 600; }
+.ldl-num { font-size: 17px; font-weight: 900; }
+.ldl-row.vhigh .ldl-risk, .ldl-row.vhigh .ldl-num { color: var(--danger); }
+.ldl-row.high .ldl-risk, .ldl-row.high .ldl-num { color: var(--warn); }
+.ldl-row.mod .ldl-risk, .ldl-row.mod .ldl-num { color: #854F0B; }
+.hier-list { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+.hier-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-size: 13px;
+}
+.hier-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: white;
+}
+.hier-item:nth-child(1) { background: var(--primary-pale); }
+.hier-item:nth-child(1) .hier-num { background: var(--primary); }
+.hier-item:nth-child(2) { background: #EAF3DE; }
+.hier-item:nth-child(2) .hier-num { background: #3B6D11; }
+.hier-item:nth-child(3) { background: var(--warn-light); }
+.hier-item:nth-child(3) .hier-num { background: #854F0B; }
+.hier-item:nth-child(4) { background: var(--danger-light); }
+.hier-item:nth-child(4) .hier-num { background: var(--danger); }
+.summary-block {
+  background: linear-gradient(135deg, #0A3D2B, #0F6E56);
+  border-radius: 12px;
+  padding: 20px 22px;
+  color: white;
+  margin-top: 22px;
+  margin-bottom: 6px;
+}
+.summary-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+.sum-pts { display: flex; flex-direction: column; gap: 8px; }
+.sum-pt {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+.pt-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.65);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 22px 20px;
+  font-size: 11px;
+  color: var(--gray);
+  max-width: 940px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .calc-grid { grid-template-columns: 1fr; }
+  .change-body { grid-template-columns: 1fr; }
+  .change-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+  .metric-row { flex-direction: column; align-items: flex-start; }
+  .tab-btn { padding: 12px 10px; font-size: 11px; }
+  .tab-num { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="header-badge">🔥 2026 신규 발표</div>
+      <div class="header-logo">Lipitor<span>®</span></div>
+    </div>
+    <h1>리피토 × <em>2026 ACC/AHA</em><br>Guideline on the Management of Dyslipidemia</h1>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab(0)"><span class="tab-num">1</span>가이드라인 변화 요약</button>
+  <button class="tab-btn" onclick="switchTab(1)"><span class="tab-num">2</span>가이드라인 챗봇</button>
+  <button class="tab-btn" onclick="switchTab(2)"><span class="tab-num">3</span>환자 맞춤 전략</button>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ====== TAB 2: CHATBOT ====== -->
+  <div class="tab-panel" id="panel-1">
+    <div class="card">
+      <div class="card-title">💬 가이드라인 AI 도우미</div>
+      <div class="card-sub">아래 빠른 질문 버튼을 클릭하거나, 키워드·질문을 직접 입력하여 2026 ACC/AHA 가이드라인 핵심 내용을 즉시 확인하세요.</div>
+
+      <div class="quick-btns">
+        <button class="quick-btn" onclick="askQ('LDL-C 목표 수치가 어떻게 바뀌었나요?')">🎯 LDL 목표 수치</button>
+        <button class="quick-btn" onclick="askQ('스타틴 처방 원칙과 1차 치료제 지위')">💊 스타틴 처방 원칙</button>
+        <button class="quick-btn" onclick="askQ('당뇨병 환자에서 스타틴 사용')">🩺 당뇨 환자 스타틴</button>
+        <button class="quick-btn" onclick="askQ('PREVENT 방정식이 무엇인가요?')">📊 PREVENT 방정식</button>
+        <button class="quick-btn" onclick="askQ('Lp(a) 검사 권고')">🔬 Lp(a) 검사</button>
+        <button class="quick-btn" onclick="askQ('비스타틴 병용요법 순서')">🔗 비스타틴 병용</button>
+        <button class="quick-btn" onclick="askQ('아토르바스타틴 리피토 장점')">⭐ 리피토 장점</button>
+        <button class="quick-btn" onclick="askQ('고강도 스타틴 적응증')">🔴 고강도 스타틴</button>
+        <button class="quick-btn" onclick="askQ('CKD 만성신장질환 HIV 환자 스타틴')">🏥 CKD·HIV 환자</button>
+        <button class="quick-btn" onclick="askQ('중성지방 triglyceride')">🔷 중성지방</button>
+      </div>
+
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+          <div class="msg bot">
+            <div class="msg-avatar">L</div>
+            <div class="msg-bubble">안녕하세요! 저는 <strong>2026 ACC/AHA 이상지질혈증 가이드라인</strong> 도우미입니다. 📋<br><br>
+            위 빠른 질문 버튼을 클릭하거나, 궁금한 내용을 직접 입력해 주세요.<br>
+            LDL 목표 수치, 스타틴 원칙, 당뇨 환자 관리, 리피토 임상 근거 등 주요 내용을 안내해 드립니다.</div>
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <input class="chat-input" id="chatInput" type="text" placeholder="질문 입력 (예: 초고위험군 LDL 목표는?) — Enter 또는 전송 버튼" onkeydown="if(event.key==='Enter')sendChat()">
+          <button class="send-btn" onclick="sendChat()">전송 ↗</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== TAB 3: PATIENT CALCULATOR ====== -->
+  <div class="tab-panel" id="panel-2">
+    <div class="card">
+      <div class="card-title">🧬 환자 맞춤형 리피토 전략</div>
+      <div class="card-sub">환자 프로파일을 입력하면 2026 ACC/AHA 가이드라인 기반의 LDL-C 목표, 권고 용량, 핵심 임상 근거를 제시합니다.</div>
+
+      <div class="calc-grid">
+        <div class="form-group">
+          <label class="form-label">현재 LDL-C (mg/dL)</label>
+          <input class="form-control" type="number" id="ldlInput" placeholder="예: 142" min="20" max="500">
+        </div>
+        <div class="form-group">
+          <label class="form-label">나이 (세)</label>
+          <input class="form-control" type="number" id="ageInput" placeholder="예: 58" min="18" max="100">
+        </div>
+        <div class="form-group">
+          <label class="form-label">성별</label>
+          <select class="form-control" id="sexInput">
+            <option value="">선택하세요</option>
+            <option value="male">남성</option>
+            <option value="female">여성</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">10년 ASCVD 위험도 (%)</label>
+          <input class="form-control" type="number" id="riskInput" placeholder="예: 12" min="0" max="100" step="0.1">
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div class="section-label">동반질환 / 위험 요소</div>
+        <div class="checkbox-group" id="comorbidGroup">
+          <label class="check-item"><input type="checkbox" value="prev_ascvd"> 기존 ASCVD (2차 예방)</label>
+          <label class="check-item"><input type="checkbox" value="recurrent_ascvd"> 반복 ASCVD 사건</label>
+          <label class="check-item"><input type="checkbox" value="dm"> 당뇨병</label>
+          <label class="check-item"><input type="checkbox" value="ckd"> 만성신장질환 (3-4기)</label>
+          <label class="check-item"><input type="checkbox" value="hiv"> HIV</label>
+          <label class="check-item"><input type="checkbox" value="fh"> 가족성 고콜레스테롤혈증</label>
+          <label class="check-item"><input type="checkbox" value="htn"> 고혈압</label>
+          <label class="check-item"><input type="checkbox" value="stroke"> 뇌졸중 / TIA 과거력</label>
+          <label class="check-item"><input type="checkbox" value="multivessel"> 다혈관 질환</label>
+        </div>
+      </div>
+
+      <div style="margin-bottom:6px;">
+        <div class="section-label">가족력</div>
+        <div class="checkbox-group">
+          <label class="check-item"><input type="checkbox" id="famHist"> 조기 심혈관질환 가족력 (남 &lt;55세 / 여 &lt;65세)</label>
+        </div>
+      </div>
+
+      <button class="calc-btn" onclick="calcStrategy()">📊 맞춤 전략 생성하기</button>
+
+      <!-- RESULT CARD -->
+      <div class="result-card" id="resultCard">
+        <div class="result-header">
+          <h3 id="rPatientLabel">환자 맞춤형 권고안</h3>
+          <p>2026 ACC/AHA Guideline on the Management of Dyslipidemias 기반</p>
+        </div>
+        <div class="result-body">
+
+          <div class="result-sec">
+            <div class="result-sec-title">위험도 분류</div>
+            <span class="risk-badge" id="rRiskBadge"></span>
+          </div>
+
+          <div class="result-sec">
+            <div class="result-sec-title">LDL-C 목표 및 감소 필요율</div>
+            <div class="metric-row">
+              <div class="metric-box">
+                <div class="metric-lbl">현재 LDL-C</div>
+                <div class="metric-val" id="rCurrLdl">—</div>
+                <div class="metric-unit">mg/dL</div>
+              </div>
+              <div class="arrow-sep">→</div>
+              <div class="metric-box danger-box">
+                <div class="metric-lbl">목표 LDL-C</div>
+                <div class="metric-val" id="rTargLdl">—</div>
+                <div class="metric-unit">mg/dL</div>
+              </div>
+              <div class="arrow-sep">→</div>
+              <div class="metric-box success-box">
+                <div class="metric-lbl">감소 필요율</div>
+                <div class="metric-val" id="rRedux">—</div>
+                <div class="metric-unit">%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-sec">
+            <div class="result-sec-title">리피토 권고 전략</div>
+            <div class="rec-box">
+              <div class="rec-lbl">권고 약제 및 용량</div>
+              <div class="rec-val" id="rDrug">—</div>
+              <div class="rec-note" id="rNote">—</div>
+            </div>
+            <div class="add-note" id="rExtra" style="display:none;"></div>
+          </div>
+
+          <div class="result-sec">
+            <div class="result-sec-title">근거 임상 연구 (Key Trials)</div>
+            <div class="trial-cards" id="rTrials"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== TAB 1: GUIDELINE COMPARISON ====== -->
+  <div class="tab-panel active" id="panel-0">
+
+    <div class="comp-header">
+      <div class="vs-badge">2018 → 2026 주요 변화</div>
+      <h2>ACC/AHA 이상지질혈증 가이드라인</h2>
+      <p>약 8년 만의 가장 중요한 콜레스테롤 관리 지침 대개정 — 핵심 변화 한눈에 보기</p>
+    </div>
+
+    <!-- 1 명칭 -->
+    <div class="change-item">
+      <div class="change-hdr">
+        <div class="change-icon" style="background:#EBF0FA;">📋</div>
+        <span class="change-cat">가이드라인 명칭 변경</span>
+        <span class="change-type type-change">변경</span>
+      </div>
+      <div class="change-body">
+        <div class="change-col">
+          <span class="col-label lbl-2018">2018년</span>
+          <p>Guideline on the Management of<br><strong>Blood Cholesterol</strong><br><span style="font-size:12px;color:var(--gray);">(혈중 콜레스테롤 관리)</span></p>
+        </div>
+        <div class="change-col">
+          <span class="col-label lbl-2026">2026년</span>
+          <p>Guideline on the Management of<br><span class="hl">Dyslipidemias</span><br><span style="font-size:12px;color:var(--gray);">(이상지질혈증 관리) — 범위 대폭 확대</span></p>
+          <p style="margin-top:8px;font-size:12px;color:var(--text-secondary);">→ LDL-C 외에 중성지방, 잔류입자, Lp(a)까지 독립적 ASCVD 위험인자로 포괄</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 LDL 목표 -->
+    <div class="change-item">
+      <div class="change-hdr">
+        <div class="change-icon" style="background:#FCEBEB;">🎯</div>
+        <span class="change-cat">LDL-C 치료 목표 수치 복원 <span style="font-size:11px;font-weight:400;color:var(--gray);">(가장 중요한 변화)</span></span>
+        <span class="change-type type-reinstate">복원</span>
+      </div>
+      <div class="change-body">
+        <div class="change-col">
+          <span class="col-label lbl-2018">2018년</span>
+          <p>명확한 LDL-C 수치 목표 <strong>비권고</strong></p>
+          <p style="margin-top:8px;font-size:12px;color:var(--text-secondary);">"더 많이 낮출수록 좋다" 개념 중심, 스타틴 강도(고/중강도)에만 집중</p>
+        </div>
+        <div class="change-col">
+          <span class="col-label lbl-2026">2026년</span>
+          <div class="ldl-targets">
+            <div class="ldl-row vhigh"><span class="ldl-risk">초고위험군</span><span class="ldl-num">&lt;55 mg/dL</span></div>
+            <div class="ldl-row high"><span class="ldl-risk">고위험 / 2차 예방</span><span class="ldl-num">&lt;70 mg/dL</span></div>
+            <div class="ldl-row mod"><span class="ldl-risk">경계/중등도 위험군</span><span class="ldl-num">&lt;100 mg/dL</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 PREVENT -->
+    <div class="change-item">
+      <div class="change-hdr">
+        <div class="change-icon" style="background:#EAF3DE;">📊</div>
+        <span class="change-cat">10년 ASCVD 위험 평가 도구 교체</span>
+        <span class="change-type type-change">교체</span>
+      </div>
+      <div class="change-body">
+        <div class="change-col">
+          <span class="col-label lbl-2018">2018년</span>
+          <p><strong>Pooled Cohort Equations (PCE)</strong></p>
+          <p style="margin-top:6px;font-size:12px;color:var(--text-secondary);">적용 연령 40-79세, 인종/성별 기반 계산</p>
+        </div>
+        <div class="change-col">
+          <span class="col-label lbl-2026">2026년</span>
+          <p><span class="hl">AHA PREVENT™ 방정식</span></p>
+          <p style="margin-top:6px;font-size:12px;color:var(--text-secondary);">적용 연령 <strong>30-79세</strong>로 확대<br>신장기능, 신체지표 추가 반영 → 더 정밀한 위험 보정</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Lp(a) -->
+    <div class="change-item">
+      <div class="change-hdr">
+        <div class="change-icon" style="background:#E1F5EE;">🔬</div>
+        <span class="change-cat">Lp(a) 전체 성인 선별 검사 — 미국 주요 가이드라인 최초</span>
+        <span class="change-type type-new">신규</span>
+      </div>
+      <div class="change-body">
+        <div class="change-col">
+          <span class="col-label lbl-2018">2018년</span>
+          <p>Lp(a)는 일부 선별적 고위험 환자에서만 고려<br><span style="font-size:12px;color:var(--text-secondary);">주류 권고 아님</span></p>
+        </div>
+        <div class="change-col">
+          <span class="col-label lbl-2026">2026년</span>
+          <p><span class="hl">모든 성인에서 최소 1회 Lp(a) 검사 권고</span></p>
+          <p style="margin-top:6px;font-size:12px;color:var(--text-secondary);">LDL-C, 중성지방과 함께 독립적 ASCVD 위험인자로 공식 인정<br>Lp(a) 상승 → 더 공격적 LDL-C 치료 근거</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 비스타틴 순서 -->
+    <div class="change-item">
+      <div class="change-hdr">
+        <div class="change-icon" style="background:#FAEEDA;">💊</div>
+        <span class="change-cat">비스타틴 병용요법 순서 명확화</span>
+        <span class="change-type type-new">신규</span>
+      </div>
+      <div class="change-body">
+        <div class="change-col">
+          <span class="col-label lbl-2018">2018년</span>
+          <p>비스타틴 약제 순서 <strong>명확하지 않음</strong></p>
+          <p style="margin-top:6px;font-size:12px;color:var(--text-secondary);">에제티미브, PCSK9 억제제 언급은 있었으나 근거 기반 위계 체계 부재</p>
+        </div>
+        <div class="change-col">
+          <span class="col-label lbl-2026">2026년</span>
+          <div class="hier-list">
+            <div class="hier-item"><span class="hier-num">1</span><span>스타틴 (생활습관 후 1차 치료제 — 항상 먼저)</span></div>
+            <div class="hier-item"><span class="hier-num">2</span><span>에제티미브 (Ezetimibe) 추가</span></div>
+            <div class="hier-item"><span class="hier-num">3</span><span>벰페도산 (Bempedoic acid) 추가</span></div>
+            <div class="hier-item"><span class="hier-num">4</span><span>PCSK9 억제제 / 인클리시란</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 소아/젊은 성인 -->
+    <div class="change-item">
+      <div class="change-hdr">
+        <div class="change-icon" style="background:#FBEAF0;">👶</div>
+        <span class="change-cat">소아·청소년 및 젊은 성인 포함 — 평생 프레임워크</span>
+        <span class="change-type type-new">신규</span>
+      </div>
+      <div class="change-body">
+        <div class="change-col">
+          <span class="col-label lbl-2018">2018년</span>
+          <p>주로 성인 중심 권고<br><span style="font-size:12px;color:var(--text-secondary);">소아·청소년 언급 제한적</span></p>
+        </div>
+        <div class="change-col">
+          <span class="col-label lbl-2026">2026년</span>
+          <p><span class="hl">Lifespan framing (평생 프레임워크)</span> 도입</p>
+          <p style="margin-top:6px;font-size:12px;color:var(--text-secondary);">가족성 고콜레스테롤혈증 소아 및 LDL ≥160 mg/dL 젊은 성인 명시 포함</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 특수 집단 -->
+    <div class="change-item">
+      <div class="change-hdr">
+        <div class="change-icon" style="background:#EBF0FA;">🏥</div>
+        <span class="change-cat">당뇨병·CKD 3-4기·HIV 환자: 스타틴 무조건 권고 강화</span>
+        <span class="change-type type-enhance">강화</span>
+      </div>
+      <div class="change-body">
+        <div class="change-col">
+          <span class="col-label lbl-2018">2018년</span>
+          <p>당뇨, CKD 환자 스타틴 권고 있었으나 LDL 수치 및 조건 기반</p>
+        </div>
+        <div class="change-col">
+          <span class="col-label lbl-2026">2026년</span>
+          <p><span class="hl">40-75세 당뇨 / CKD 3-4기 / HIV 환자는 LDL-C 수치와 무관하게 스타틴 1차 예방 권고</span></p>
+          <p style="margin-top:6px;font-size:12px;color:var(--text-secondary);">당뇨는 금기가 아닌 적응증 — 스타틴 혜택 &gt;&gt; 신규 당뇨 위험</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Bar -->
+    <div class="summary-block">
+      <h3>💊 2026 가이드라인 — 리피토(아토르바스타틴)에 대한 핵심 함의</h3>
+      <div class="sum-pts">
+        <div class="sum-pt"><div class="pt-dot"></div><span>수치 목표 복원으로 목표 달성을 위한 <strong>고강도 스타틴 필요성 증가</strong> → 아토르바스타틴 40-80mg의 역할 강화</span></div>
+        <div class="sum-pt"><div class="pt-dot"></div><span>아토르바스타틴 10-20mg(중등도) + 40-80mg(고강도) — <strong>단일 약제로 전 위험군 커버 가능</strong>한 유일한 스타틴</span></div>
+        <div class="sum-pt"><div class="pt-dot"></div><span>PREVENT™ 방정식으로 30세부터 위험 평가 → <strong>더 젊은 환자에서 조기 스타틴 시작</strong> 정당화</span></div>
+        <div class="sum-pt"><div class="pt-dot"></div><span>당뇨·CKD·HIV 환자의 LDL 무관 스타틴 권고 → <strong>리피토 처방 기회 확대</strong></span></div>
+        <div class="sum-pt"><div class="pt-dot"></div><span>CARDS, ASCOT-LLA, TNT, SPARCL 등 탁월한 임상 근거 — <strong>가이드라인 권고와 완벽히 일치</strong></span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  본 자료는 2026 ACC/AHA Guideline on the Management of Dyslipidemias 내용을 리피토(아토르바스타틴) 영업 담당자를 위해 재구성한 교육·참고 목적 자료입니다.<br>
+  임상 결정은 항상 가이드라인 원문 및 의료진의 전문적 판단에 따라야 합니다. | Lipitor® (Atorvastatin Calcium) · For Internal Use Only
+</div>
+
+<script>
+// ========== TAB SWITCH ==========
+function switchTab(i) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + i).classList.add('active');
+  document.querySelectorAll('.tab-btn')[i].classList.add('active');
+}
+
+// ========== CHATBOT DATA ==========
+const QA = [
+  {
+    keys:['ldl','목표','수치','타겟','target','mg','mmol','치료목표'],
+    title:'🎯 LDL-C 치료 목표 수치 (2026 복원)',
+    body:`2026 가이드라인의 가장 중요한 변화 중 하나는 <strong>수치 기반 LDL-C 목표의 복원</strong>입니다 (2018년에는 비권고).<br><br>
+<strong>위험도별 LDL-C 목표:</strong><br>
+🔴 <strong>초고위험군</strong> (반복 ASCVD, 다혈관질환 등): <strong>&lt;55 mg/dL</strong><br>
+🟠 <strong>고위험 / 2차 예방</strong> (기존 ASCVD, 기타 고위험): <strong>&lt;70 mg/dL</strong><br>
+🟡 <strong>중등도 위험군</strong> (10년 위험 ≥7.5%): <strong>&lt;70 mg/dL</strong><br>
+🔵 <strong>경계/중등도 위험군</strong> (10년 위험 3-7.5%): <strong>&lt;100 mg/dL</strong><br><br>
+<em>→ 이 변화는 고강도 스타틴(아토르바스타틴 40-80mg)이 더 많은 환자에게 필요함을 의미합니다.</em>`
+  },
+  {
+    keys:['스타틴','처방','원칙','1차','first','cornerstone','기초','토대'],
+    title:'💊 스타틴: 변함없는 1차 치료제',
+    body:`2026 가이드라인은 스타틴을 LDL-C 강하 및 ASCVD 위험 감소의 <strong>핵심 1차 치료제(Cornerstone)</strong>로 명확히 재확인합니다.<br><br>
+✅ 수많은 CVD 임상연구에서 안전성·내약성·효능 입증 → <strong>가장 강력한 근거기반</strong><br>
+✅ 생활습관 교정 후에도 LDL 목표 미달 시 <strong>스타틴을 먼저 시작</strong><br>
+✅ 스타틴 내약 시 비스타틴 약제는 <strong>대체가 아닌 추가 병용</strong>으로만 사용<br>
+✅ 1차 및 2차 예방 모두에서 광범위하게 적용<br>
+✅ 고중성지방혈증 환자에서도 LDL-C 강하 이상의 ASCVD 위험 감소 효과 확인<br><br>
+<em>→ 스타틴은 변함 없이 1차 치료 옵션입니다.</em>`
+  },
+  {
+    keys:['당뇨','diabetes','dm','인슐린','혈당','신규 발병','당뇨발생','새로운 당뇨'],
+    title:'🩺 당뇨병과 스타틴 사용',
+    body:`2026 가이드라인은 당뇨병-스타틴 관계에 대해 명확하고 안심할 수 있는 입장을 제시합니다.<br><br>
+⚠️ 스타틴(특히 고강도)은 당뇨 전단계 환자에서 신규 2형 당뇨 발생 위험을 <strong>소폭</strong> 증가시킬 수 있음<br><br>
+✅ 그러나 <strong>심혈관 혜택 (MI, 뇌졸중, CV 사망 감소) &gt;&gt; 당뇨 발생 위험</strong><br>
+✅ 당뇨 위험을 이유로 스타틴을 <strong>보류하지 않도록</strong> 명시<br>
+✅ <strong>40-75세 당뇨 환자</strong>: LDL-C 수치와 무관하게 스타틴 1차 예방 강력 권고<br>
+✅ 당뇨는 스타틴 금기가 아니라 오히려 <strong>핵심 적응증</strong><br><br>
+📊 <strong>CARDS 연구 근거</strong>: 당뇨 환자에서 아토르바스타틴 10mg → ASCVD 사건 <strong>37% 감소</strong>`
+  },
+  {
+    keys:['prevent','방정식','위험','평가','10년','pooled','cohort','pce'],
+    title:'📊 AHA PREVENT™ 방정식',
+    body:`2026 가이드라인은 기존 Pooled Cohort Equations를 <strong>AHA PREVENT™ 방정식</strong>으로 교체했습니다.<br><br>
+<strong>주요 변화:</strong><br>
+🔄 적용 연령: 40-79세 → <strong>30-79세</strong> (10년 확대)<br>
+🔄 더 정밀한 다변수 위험 보정 (신장 기능, 신체지표 포함)<br>
+🔄 현대 인구통계에 맞게 재보정<br><br>
+<strong>위험도별 치료 권고 기준:</strong><br>
+• 10년 위험 3-5% (경계): 중등도 스타틴 <strong>고려</strong><br>
+• 10년 위험 ≥5-10% (중등도): 중등도 스타틴 <strong>강력 권고</strong><br>
+• 10년 위험 ≥7.5-20%: 고강도 스타틴 고려<br><br>
+<em>→ 30세부터 위험 평가 → 더 젊은 환자에서 리피토 조기 처방 정당화</em>`
+  },
+  {
+    keys:['lp','lpa','lipoprotein','리포단백','검사','선별','lp(a)'],
+    title:'🔬 Lp(a) 선별 검사 (미국 가이드라인 최초)',
+    body:`2026 가이드라인은 미국 주요 가이드라인 최초로 <strong>모든 성인에서 최소 1회 Lp(a) 검사</strong>를 권고합니다.<br><br>
+✅ Lp(a)를 <strong>독립적 ASCVD 위험인자</strong>로 공식 인정<br>
+✅ LDL-C, 중성지방, 잔류입자와 함께 이상지질혈증 평가에 포함<br>
+✅ 가족력 있거나 조기 ASCVD 환자에서 특히 중요<br><br>
+<strong>임상적 함의:</strong><br>
+→ Lp(a) 상승이 확인된 환자 → 더 공격적인 LDL-C 목표 설정 근거<br>
+→ 아토르바스타틴 고강도 용량 필요성을 추가로 정당화할 수 있음`
+  },
+  {
+    keys:['비스타틴','에제티미브','ezetimibe','pcsk9','벰페도','bempedoic','inclisiran','병용','추가','add-on','인클리시란'],
+    title:'💊 비스타틴 병용요법 권고 순서',
+    body:`2026 가이드라인은 스타틴 단독으로 LDL 목표 미달 시 비스타틴 약제 추가 순서를 <strong>명확히</strong> 제시합니다:<br><br>
+<strong>1순위 ★ 스타틴</strong> — 항상 먼저, 생활습관 후 바로 시작<br>
+<strong>2순위</strong> → 에제티미브 (Ezetimibe) 추가<br>
+<strong>3순위</strong> → 벰페도산 (Bempedoic acid) 추가<br>
+<strong>4순위</strong> → PCSK9 억제제 또는 인클리시란 추가<br><br>
+⚠️ <strong>중요 원칙</strong>: 스타틴 내약성이 있는 경우, 어떤 비스타틴 약제도 <strong>스타틴의 대체제가 될 수 없음</strong><br><br>
+<em>→ 리피토로 최대 용량까지 LDL 감소 후, 목표 미달 시에만 병용 전략 적용</em>`
+  },
+  {
+    keys:['아토르바스타틴','atorvastatin','리피토','lipitor','장점','강점','특징','장점은','이점'],
+    title:'⭐ 아토르바스타틴(리피토)의 2026 가이드라인 강점',
+    body:`2026 가이드라인은 아토르바스타틴의 독보적 위치를 더욱 강화합니다:<br><br>
+⭐ <strong>이중 강도 유일성</strong>: 10-20mg → 중등도 강도 / 40-80mg → 고강도<br>
+→ 단일 약제로 경계위험군~초고위험군까지 커버 가능한 유일한 스타틴<br><br>
+⭐ <strong>수치 목표 복원의 최대 수혜자</strong>: &lt;55mg/dL 달성을 위한 고강도 필요 환자 급증<br>
+→ 아토르바스타틴 40-80mg은 단 2가지 고강도 스타틴 중 하나 (나머지: 로수바스타틴 20-40mg)<br><br>
+⭐ <strong>4대 랜드마크 임상연구</strong>:<br>
+🔹 <strong>CARDS</strong>: 당뇨 1차 예방, 아토르 10mg → CV 사건 37%↓<br>
+🔹 <strong>ASCOT-LLA</strong>: 고혈압 1차 예방, 아토르 10mg → CV 사건 36%↓<br>
+🔹 <strong>TNT</strong>: 2차 예방, 아토르 80mg vs 10mg → &lt;70mg/dL 목표 22% 추가↓<br>
+🔹 <strong>SPARCL</strong>: 뇌졸중/TIA 후, 아토르 80mg → 재발 16%↓, CV 사건 35%↓`
+  },
+  {
+    keys:['고강도','high intensity','40mg','80mg','high-intensity','강도','intense'],
+    title:'🔴 고강도 스타틴 적응증 (2026)',
+    body:`2026 가이드라인에서 <strong>고강도 스타틴</strong>이 명확히 필요한 경우:<br><br>
+🔴 <strong>초고위험군</strong> → LDL 목표 &lt;55 mg/dL 달성 위해:<br>
+- 반복 ASCVD 사건, 다혈관 질환<br>
+- 당뇨 + 주요 위험인자 복합<br><br>
+🟠 <strong>고위험 2차 예방</strong> → LDL 목표 &lt;70 mg/dL:<br>
+- ASCVD 확진 환자, LDL ≥190 mg/dL 환자<br><br>
+<strong>고강도 스타틴: 단 2가지만 해당</strong><br>
+✅ <strong>아토르바스타틴 40-80mg (리피토®)</strong><br>
+✅ 로수바스타틴 20-40mg<br><br>
+<em>고강도 = LDL을 평균 ≥50% 감소시키는 용량에 한함</em><br>
+→ 2026 가이드라인의 수치 목표 복원으로 고강도 스타틴 필요 환자가 <strong>크게 확대</strong>됩니다`
+  },
+  {
+    keys:['ckd','신장','kidney','만성신장','chronic','hiv','에이즈','aids'],
+    title:'🏥 CKD·HIV 환자 스타틴 권고',
+    body:`2026 가이드라인은 <strong>CKD 3-4기 및 HIV 환자</strong>에 대해 명확한 스타틴 권고를 제공합니다:<br><br>
+✅ <strong>40-75세 CKD 3-4기</strong>: LDL-C 수치와 무관하게 스타틴 1차 예방 강력 권고<br>
+✅ <strong>HIV 환자</strong>: 심혈관 위험이 높아 스타틴 권고 (약물 상호작용 주의)<br><br>
+<strong>아토르바스타틴의 CKD 장점:</strong><br>
+→ 주로 간에서 대사되므로 CKD 환자에서도 용량 조정 없이 사용 가능<br>
+→ 신기능 보호 효과 추가 확인 중 (일부 데이터 존재)<br><br>
+⚠️ 주의: CKD 3-4기에서는 일부 스타틴 용량 제한 있을 수 있음 → 아토르바스타틴은 상대적으로 유연`
+  },
+  {
+    keys:['중성지방','triglyceride','tg','고중성지방','잔류','remnant'],
+    title:'🔷 중성지방·잔류입자 관리',
+    body:`2026 가이드라인은 이상지질혈증의 범위를 LDL-C 너머로 확장했습니다:<br><br>
+✅ <strong>중성지방(TG)</strong>을 독립적 ASCVD 위험인자로 명시<br>
+✅ <strong>잔류입자(Remnant particles)</strong>도 ASCVD 위험에 기여하는 인자로 포함<br>
+✅ Lp(a)와 함께 새로운 이상지질혈증 삼각편대 형성<br><br>
+<strong>스타틴과 중성지방:</strong><br>
+→ 스타틴은 LDL-C 외에 고중성지방혈증 환자에서도 ASCVD 위험 감소 효과 확인<br>
+→ 고중성지방혈증 환자에서도 스타틴 먼저 시작이 원칙<br><br>
+특화 약제 (피브레이트, 오메가-3)는 스타틴 이후 단계에서 고려`
+  }
+];
+
+function findAnswer(q) {
+  const lq = q.toLowerCase().replace(/\s+/g,' ');
+  for (const item of QA) {
+    if (item.keys.some(k => lq.includes(k))) return item;
+  }
+  return null;
+}
+
+let firstBot = true;
+function appendMsg(cls, av, html) {
+  const c = document.getElementById('chatMessages');
+  const d = document.createElement('div');
+  d.className = `msg ${cls}`;
+  d.innerHTML = `<div class="msg-avatar">${av}</div><div class="msg-bubble">${html}</div>`;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+function sendChat() {
+  const inp = document.getElementById('chatInput');
+  const q = inp.value.trim();
+  if (!q) return;
+  appendMsg('user','나', q);
+  inp.value = '';
+  setTimeout(() => {
+    const r = findAnswer(q);
+    if (r) {
+      appendMsg('bot','L', `<strong>${r.title}</strong><br><br>${r.body}`);
+    } else {
+      appendMsg('bot','L', `"<strong>${q}</strong>"에 대한 구체적인 정보를 찾지 못했습니다.<br><br>아래 키워드로 다시 시도해 보세요:<br>
+      <br>🎯 LDL 목표 수치 &nbsp;|&nbsp; 💊 스타틴 처방 원칙 &nbsp;|&nbsp; 🩺 당뇨 환자<br>
+      📊 PREVENT 방정식 &nbsp;|&nbsp; 🔬 Lp(a) 검사 &nbsp;|&nbsp; 🔗 비스타틴 병용<br>
+      ⭐ 리피토 장점 &nbsp;|&nbsp; 🔴 고강도 스타틴 &nbsp;|&nbsp; 🏥 CKD·HIV &nbsp;|&nbsp; 🔷 중성지방`);
+    }
+  }, 280);
+}
+
+function askQ(q) {
+  document.getElementById('chatInput').value = q;
+  sendChat();
+}
+
+// ========== PATIENT CALCULATOR ==========
+const TRIALS_DB = {
+  cards: {
+    name: 'CARDS (2004)',
+    tag: '1차 예방 · 당뇨병',
+    population: '2형 당뇨병 환자 2,838명 (이전 CVD 없음)',
+    treatment: '아토르바스타틴 10mg vs 위약',
+    followup: '평균 3.9년 추적 — 조기 종료',
+    statNum: '37%',
+    statLabel: '주요 CV 사건 감소',
+    statSub: '(MI·뇌졸중·혈관재술)',
+    footer: '당뇨 환자 1차 예방의 핵심 근거 — 혜택 압도적으로 조기 종료'
+  },
+  ascot: {
+    name: 'ASCOT-LLA (2003)',
+    tag: '1차 예방 · 고혈압',
+    population: '고혈압 + CVD 없음 환자 10,305명',
+    treatment: '아토르바스타틴 10mg vs 위약',
+    followup: '평균 3.3년 추적 — 조기 종료',
+    statNum: '36%',
+    statLabel: '비치명적 MI + 치명적 CHD 감소',
+    statSub: '',
+    footer: '고혈압 환자 스타틴 1차 예방 근거 확립 — 조기 종료'
+  },
+  tnt: {
+    name: 'TNT (2005)',
+    tag: '2차 예방 · 고강도 비교',
+    population: '안정성 관상동맥질환 환자 10,001명',
+    treatment: '아토르바스타틴 80mg vs 10mg',
+    followup: '평균 4.9년 추적',
+    statNum: '22%',
+    statLabel: '주요 CV 사건 추가 감소',
+    statSub: '(고강도 vs 중등도)',
+    footer: 'LDL <70 mg/dL 목표의 핵심 근거 — 2026 가이드라인 목표 수치 복원 배경'
+  },
+  sparcl: {
+    name: 'SPARCL (2006)',
+    tag: '뇌졸중 2차 예방',
+    population: '비심인성 뇌졸중·TIA 환자 4,731명',
+    treatment: '아토르바스타틴 80mg vs 위약',
+    followup: '평균 4.9년 추적',
+    statNum: '35%',
+    statLabel: '주요 CV 사건 감소',
+    statSub: '뇌졸중 재발 16%↓ 포함',
+    footer: '뇌졸중·TIA 후 고강도 스타틴의 유일한 대규모 근거'
+  }
+};
+
+function getChecked(groupId) {
+  const g = document.getElementById(groupId);
+  return Array.from(g.querySelectorAll('input[type=checkbox]')).filter(c=>c.checked).map(c=>c.value);
+}
+
+function calcStrategy() {
+  const ldl = parseFloat(document.getElementById('ldlInput').value);
+  const age = parseInt(document.getElementById('ageInput').value);
+  const sex = document.getElementById('sexInput').value;
+  const risk10 = parseFloat(document.getElementById('riskInput').value) || 0;
+  const comorbids = getChecked('comorbidGroup');
+  const famHist = document.getElementById('famHist').checked;
+
+  if (!ldl || isNaN(ldl) || !age || isNaN(age)) {
+    alert('LDL-C 수치와 나이는 필수 입력값입니다.');
+    return;
+  }
+
+  const prevAscvd = comorbids.includes('prev_ascvd');
+  const recurrent = comorbids.includes('recurrent_ascvd');
+  const dm = comorbids.includes('dm');
+  const ckd = comorbids.includes('ckd');
+  const hiv = comorbids.includes('hiv');
+  const fh = comorbids.includes('fh');
+  const htn = comorbids.includes('htn');
+  const stroke = comorbids.includes('stroke');
+  const multivessel = comorbids.includes('multivessel');
+
+  let riskLabel, riskClass, ldlTarget, drugRec, noteRec, extraRec, trialKeys;
+
+  if (recurrent || multivessel || (prevAscvd && dm) || (prevAscvd && ldl >= 190)) {
+    riskLabel='초고위험군 (Very High Risk)'; riskClass='risk-very-high';
+    ldlTarget=55;
+    drugRec='아토르바스타틴 40-80mg (리피토®)';
+    noteRec='고강도 스타틴 필수 — LDL-C를 ≥50% 감소, <55 mg/dL 달성 목표';
+    extraRec='⚠️ 목표 미달 시: 에제티미브 추가 → 필요 시 PCSK9 억제제 고려';
+    trialKeys = stroke ? ['sparcl','tnt'] : ['tnt'];
+    if (dm) trialKeys.unshift('cards');
+  } else if (prevAscvd || ldl >= 190 || (fh && ldl >= 160) || (dm && (famHist || risk10 >= 10 || htn))) {
+    riskLabel='고위험군 (High Risk)'; riskClass='risk-high';
+    ldlTarget=70;
+    drugRec='아토르바스타틴 40-80mg (리피토®)';
+    noteRec='고강도 스타틴 권고 — LDL-C <70 mg/dL, ≥50% 감소 목표';
+    extraRec = prevAscvd ? '2차 예방: TNT 근거 — 80mg으로 추가 22% CV 사건 감소' : '';
+    trialKeys = prevAscvd ? ['tnt'] : [];
+    if (stroke) trialKeys.unshift('sparcl');
+    if (dm) trialKeys.unshift('cards');
+    if (htn && !prevAscvd && !stroke) trialKeys.push('ascot');
+  } else if ((dm || ckd || hiv) && age >= 40 && age <= 75) {
+    riskLabel='고위험군 — 특수 집단 (당뇨/CKD/HIV)'; riskClass='risk-high';
+    ldlTarget=70;
+    drugRec='아토르바스타틴 10-40mg (리피토®)';
+    noteRec='LDL-C 수치 무관하게 스타틴 1차 예방 필수 (2026 가이드라인 명시)';
+    extraRec='40-75세 당뇨/CKD 3-4기/HIV: LDL-C와 무관하게 스타틴 처방 — 2026 신규 강화 권고';
+    trialKeys = dm ? ['cards'] : [];
+    if (htn) trialKeys.push('ascot');
+  } else if (risk10 >= 7.5 || (risk10 >= 5 && famHist) || ldl >= 160) {
+    riskLabel='중등도 위험군 (Intermediate Risk)'; riskClass='risk-intermediate';
+    ldlTarget=70;
+    drugRec='아토르바스타틴 10-20mg → 필요시 40mg (리피토®)';
+    noteRec='중등도 강도 스타틴 권고 — 목표 미달 시 고강도로 증량';
+    extraRec='';
+    trialKeys = htn ? ['ascot'] : [];
+    if (dm) trialKeys.unshift('cards');
+  } else if (risk10 >= 3) {
+    riskLabel='경계 위험군 (Borderline Risk)'; riskClass='risk-borderline';
+    ldlTarget=100;
+    drugRec='아토르바스타틴 10-20mg (리피토®) 고려';
+    noteRec='중등도 강도 스타틴 고려 — 위험 강화 요인 있을 시 권고';
+    extraRec='위험 강화 요인: 가족력, Lp(a) 상승, 조기 죽상경화증, 고감도 CRP ≥2.0';
+    trialKeys = htn ? ['ascot'] : [];
+  } else {
+    riskLabel='저위험군 (Low Risk)'; riskClass='risk-low';
+    ldlTarget=100;
+    drugRec='생활습관 교정 우선';
+    noteRec='LDL ≥190 mg/dL이면 스타틴 고려, 그 외 생활습관 관리 및 모니터링';
+    extraRec='';
+    trialKeys=[];
+  }
+
+  const redux = ldl > ldlTarget ? Math.round(((ldl-ldlTarget)/ldl)*100) : 0;
+  const sexLabel = sex==='male'?'남성':sex==='female'?'여성':'';
+
+  document.getElementById('rPatientLabel').textContent=`${age}세 ${sexLabel} 맞춤 권고안`;
+  document.getElementById('rRiskBadge').textContent=riskLabel;
+  document.getElementById('rRiskBadge').className=`risk-badge ${riskClass}`;
+  document.getElementById('rCurrLdl').textContent=ldl;
+  document.getElementById('rTargLdl').textContent='<'+ldlTarget;
+  document.getElementById('rRedux').textContent=redux>0?redux+'%':'목표\n도달';
+  document.getElementById('rDrug').textContent=drugRec;
+  document.getElementById('rNote').textContent=noteRec;
+
+  const extraEl=document.getElementById('rExtra');
+  if(extraRec){extraEl.style.display='block';extraEl.textContent='💡 '+extraRec;}else{extraEl.style.display='none';}
+
+  const tc=document.getElementById('rTrials');
+  tc.innerHTML='';
+  const seen=new Set();
+  trialKeys.forEach(k=>{
+    if(seen.has(k))return;seen.add(k);
+    const t=TRIALS_DB[k];if(!t)return;
+    const d=document.createElement('div');
+    d.className='trial-card';
+    d.innerHTML=`
+      <div class="trial-card-header">
+        <div class="trial-name">${t.name}</div>
+        <span class="trial-tag">${t.tag}</span>
+      </div>
+      <div class="trial-card-body">
+        <div class="trial-desc">
+          <div class="trial-desc-item">👥 <strong>대상:</strong> ${t.population}</div>
+          <div class="trial-desc-item">💊 <strong>투여:</strong> ${t.treatment}</div>
+          <div class="trial-desc-item">📅 <strong>추적:</strong> ${t.followup}</div>
+        </div>
+        <div class="trial-stat">
+          <div class="trial-stat-num">${t.statNum}</div>
+          <div class="trial-stat-label">${t.statLabel}</div>
+          ${t.statSub ? `<div class="trial-stat-sub">${t.statSub}</div>` : ''}
+        </div>
+      </div>
+      <div class="trial-card-footer">✅ ${t.footer}</div>
+    `;
+    tc.appendChild(d);
+  });
+  if(trialKeys.length===0){tc.innerHTML='<p style="font-size:13px;color:var(--gray);line-height:1.7;">해당 프로파일에서 직접 관련된 특정 임상연구보다는, 스타틴 계열 전체의 광범위한 CVD 결과 근거가 적용됩니다. 스타틴의 안전성·효능은 수십 개의 대규모 무작위 대조 임상연구로 확립되어 있습니다.</p>';}
+
+  const rc=document.getElementById('resultCard');
+  rc.style.display='block';
+  setTimeout(()=>rc.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+</script>
+</body>
+</html>
