@@ -729,15 +729,15 @@ body {
       <div class="card-sub">아래 빠른 질문 버튼을 클릭하거나, 키워드·질문을 직접 입력하여 2026 ACC/AHA 가이드라인 핵심 내용을 즉시 확인하세요.</div>
 
       <div class="quick-btns">
-        <button class="quick-btn" onclick="askQ('LDL-C 목표 수치가 어떻게 바뀌었나요?')">🎯 LDL 목표 수치</button>
-        <button class="quick-btn" onclick="askQ('스타틴 처방 원칙과 1차 치료제 지위')">💊 스타틴 처방 원칙</button>
-        <button class="quick-btn" onclick="askQ('당뇨병 환자에서 스타틴 사용')">🩺 당뇨 환자 스타틴</button>
+        <button class="quick-btn" onclick="askQ('LDL-C 목표 수치 복원')">🎯 LDL 목표 수치</button>
+        <button class="quick-btn" onclick="askQ('스타틴 처방 원칙과 1차 치료제')">💊 스타틴 처방 원칙</button>
+        <button class="quick-btn" onclick="askQ('당뇨병 환자 관리')">🩺 당뇨 환자 스타틴</button>
         <button class="quick-btn" onclick="askQ('PREVENT 방정식이 무엇인가요?')">📊 PREVENT 방정식</button>
-        <button class="quick-btn" onclick="askQ('Lp(a) 검사 권고')">🔬 Lp(a) 검사</button>
+        <button class="quick-btn" onclick="askQ('Lp(a) 선별 검사 권고')">🔬 Lp(a) 검사</button>
         <button class="quick-btn" onclick="askQ('비스타틴 병용요법 순서')">🔗 비스타틴 병용</button>
-        <button class="quick-btn" onclick="askQ('아토르바스타틴 리피토 장점')">⭐ 리피토 장점</button>
+        <button class="quick-btn" onclick="askQ('리피토 아토르바스타틴 장점')">⭐ 리피토 장점</button>
         <button class="quick-btn" onclick="askQ('고강도 스타틴 적응증')">🔴 고강도 스타틴</button>
-        <button class="quick-btn" onclick="askQ('CKD 만성신장질환 HIV 환자 스타틴')">🏥 CKD·HIV 환자</button>
+        <button class="quick-btn" onclick="askQ('CKD 만성신장질환 HIV 환자')">🏥 CKD·HIV 환자</button>
         <button class="quick-btn" onclick="askQ('중성지방 triglyceride')">🔷 중성지방</button>
       </div>
 
@@ -1059,7 +1059,7 @@ function switchTab(i) {
 // ========== CHATBOT DATA ==========
 const QA = [
   {
-    keys:['ldl','목표','수치','타겟','target','mg','mmol','치료목표'],
+    keys:['ldl-c','ldl','수치 복원','치료목표','타겟','target','mmol','목표 수치'],
     title:'🎯 LDL-C 치료 목표 수치 (2026 복원)',
     body:`2026 가이드라인의 가장 중요한 변화 중 하나는 <strong>수치 기반 LDL-C 목표의 복원</strong>입니다 (2018년에는 비권고).<br><br>
 <strong>위험도별 LDL-C 목표:</strong><br>
@@ -1070,7 +1070,7 @@ const QA = [
 <em>→ 이 변화는 고강도 스타틴(아토르바스타틴 40-80mg)이 더 많은 환자에게 필요함을 의미합니다.</em>`
   },
   {
-    keys:['스타틴','처방','원칙','1차','first','cornerstone','기초','토대'],
+    keys:['처방 원칙','cornerstone','1차 치료제','first-line','기초','토대','약제 원칙'],
     title:'💊 스타틴: 변함없는 1차 치료제',
     body:`2026 가이드라인은 스타틴을 LDL-C 강하 및 ASCVD 위험 감소의 <strong>핵심 1차 치료제(Cornerstone)</strong>로 명확히 재확인합니다.<br><br>
 ✅ 수많은 CVD 임상연구에서 안전성·내약성·효능 입증 → <strong>가장 강력한 근거기반</strong><br>
@@ -1081,7 +1081,7 @@ const QA = [
 <em>→ 스타틴은 변함 없이 1차 치료 옵션입니다.</em>`
   },
   {
-    keys:['당뇨','diabetes','dm','인슐린','혈당','신규 발병','당뇨발생','새로운 당뇨'],
+    keys:['당뇨','당뇨병','diabetes','dm','인슐린','혈당','신규 당뇨','당뇨발생'],
     title:'🩺 당뇨병과 스타틴 사용',
     body:`2026 가이드라인은 당뇨병-스타틴 관계에 대해 명확하고 안심할 수 있는 입장을 제시합니다.<br><br>
 ⚠️ 스타틴(특히 고강도)은 당뇨 전단계 환자에서 신규 2형 당뇨 발생 위험을 <strong>소폭</strong> 증가시킬 수 있음<br><br>
@@ -1092,7 +1092,7 @@ const QA = [
 📊 <strong>CARDS 연구 근거</strong>: 당뇨 환자에서 아토르바스타틴 10mg → ASCVD 사건 <strong>37% 감소</strong>`
   },
   {
-    keys:['prevent','방정식','위험','평가','10년','pooled','cohort','pce'],
+    keys:['prevent','방정식','pooled','cohort','pce','위험도 평가','10년 위험','위험 평가 도구'],
     title:'📊 AHA PREVENT™ 방정식',
     body:`2026 가이드라인은 기존 Pooled Cohort Equations를 <strong>AHA PREVENT™ 방정식</strong>으로 교체했습니다.<br><br>
 <strong>주요 변화:</strong><br>
@@ -1106,7 +1106,7 @@ const QA = [
 <em>→ 30세부터 위험 평가 → 더 젊은 환자에서 리피토 조기 처방 정당화</em>`
   },
   {
-    keys:['lp','lpa','lipoprotein','리포단백','검사','선별','lp(a)'],
+    keys:['lp(a)','lpa','lipoprotein','리포단백','선별 검사','lp검사'],
     title:'🔬 Lp(a) 선별 검사 (미국 가이드라인 최초)',
     body:`2026 가이드라인은 미국 주요 가이드라인 최초로 <strong>모든 성인에서 최소 1회 Lp(a) 검사</strong>를 권고합니다.<br><br>
 ✅ Lp(a)를 <strong>독립적 ASCVD 위험인자</strong>로 공식 인정<br>
@@ -1117,7 +1117,7 @@ const QA = [
 → 아토르바스타틴 고강도 용량 필요성을 추가로 정당화할 수 있음`
   },
   {
-    keys:['비스타틴','에제티미브','ezetimibe','pcsk9','벰페도','bempedoic','inclisiran','병용','추가','add-on','인클리시란'],
+    keys:['비스타틴','에제티미브','ezetimibe','pcsk9','벰페도','bempedoic','inclisiran','병용요법','인클리시란','add-on'],
     title:'💊 비스타틴 병용요법 권고 순서',
     body:`2026 가이드라인은 스타틴 단독으로 LDL 목표 미달 시 비스타틴 약제 추가 순서를 <strong>명확히</strong> 제시합니다:<br><br>
 <strong>1순위 ★ 스타틴</strong> — 항상 먼저, 생활습관 후 바로 시작<br>
@@ -1128,7 +1128,7 @@ const QA = [
 <em>→ 리피토로 최대 용량까지 LDL 감소 후, 목표 미달 시에만 병용 전략 적용</em>`
   },
   {
-    keys:['아토르바스타틴','atorvastatin','리피토','lipitor','장점','강점','특징','장점은','이점'],
+    keys:['아토르바스타틴','atorvastatin','리피토','lipitor','장점','강점','특징','이점'],
     title:'⭐ 아토르바스타틴(리피토)의 2026 가이드라인 강점',
     body:`2026 가이드라인은 아토르바스타틴의 독보적 위치를 더욱 강화합니다:<br><br>
 ⭐ <strong>이중 강도 유일성</strong>: 10-20mg → 중등도 강도 / 40-80mg → 고강도<br>
@@ -1142,7 +1142,7 @@ const QA = [
 🔹 <strong>SPARCL</strong>: 뇌졸중/TIA 후, 아토르 80mg → 재발 16%↓, CV 사건 35%↓`
   },
   {
-    keys:['고강도','high intensity','40mg','80mg','high-intensity','강도','intense'],
+    keys:['고강도','high-intensity','40mg','80mg','고강도 적응증','고강도 스타틴'],
     title:'🔴 고강도 스타틴 적응증 (2026)',
     body:`2026 가이드라인에서 <strong>고강도 스타틴</strong>이 명확히 필요한 경우:<br><br>
 🔴 <strong>초고위험군</strong> → LDL 목표 &lt;55 mg/dL 달성 위해:<br>
@@ -1157,7 +1157,7 @@ const QA = [
 → 2026 가이드라인의 수치 목표 복원으로 고강도 스타틴 필요 환자가 <strong>크게 확대</strong>됩니다`
   },
   {
-    keys:['ckd','신장','kidney','만성신장','chronic','hiv','에이즈','aids'],
+    keys:['ckd','만성신장','만성신장질환','kidney','hiv','에이즈','aids','신부전'],
     title:'🏥 CKD·HIV 환자 스타틴 권고',
     body:`2026 가이드라인은 <strong>CKD 3-4기 및 HIV 환자</strong>에 대해 명확한 스타틴 권고를 제공합니다:<br><br>
 ✅ <strong>40-75세 CKD 3-4기</strong>: LDL-C 수치와 무관하게 스타틴 1차 예방 강력 권고<br>
@@ -1404,3 +1404,4 @@ function calcStrategy() {
 </script>
 </body>
 </html>
+
